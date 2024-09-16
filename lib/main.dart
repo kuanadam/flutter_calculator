@@ -29,6 +29,10 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
       if (buttonText == 'C') {
         _expression = '';
         _result = '';
+      } else if (buttonText == '⌫') {
+        if (_expression.isNotEmpty) {
+          _expression = _expression.substring(0, _expression.length - 1);
+        }
       } else if (buttonText == '=') {
         try {
           Expression exp = Expression.parse(_expression);
@@ -117,6 +121,11 @@ class _CalculatorScreenState extends State<CalculatorScreen> {
                   _buildButton('C'),
                   _buildButton('='),
                   _buildButton('+'),
+                ],
+              ),
+              Row(
+                children: [
+                  _buildButton('⌫'), // Backspace button added
                 ],
               ),
             ],
